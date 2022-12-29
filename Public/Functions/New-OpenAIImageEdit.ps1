@@ -8,8 +8,7 @@ function New-OpenAIImageEdit {
     [string]$MaskPath,
     [Parameter(Mandatory)]
     [string]$Prompt,
-    [Parameter(Mandatory)]
-    [securestring]$Token,
+    [securestring]$Token = $OpenAI.cfg.OpenAIToken,
     [int]$RetryCount = 5
   )
   begin {

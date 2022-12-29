@@ -1,3 +1,6 @@
 {
-    "OpenAIPath": "C:\\repos\\openai-posh"
+    "OpenAIPath": "C:\\repos\\openai-posh",
+    "OpenAIToken": "",
+    "MagickPath": "C:\\Program Files\\ImageMagick-7.0.9-Q16\\magick.exe",
+    "FfmpegPath": "C:\\Program Files\\ImageMagick-7.0.9-Q16\\ffmpeg.exe"    
 }

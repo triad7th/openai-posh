@@ -5,9 +5,9 @@ function New-OpenAIImage {
     [string]$Path,
     [Parameter(Mandatory)]
     [string]$Prompt,
-    [Parameter(Mandatory)]
-    [securestring]$Token,
-    [int]$RetryCount = 5        
+    [securestring]$Token = $OpenAI.cfg.OpenAIToken,
+    [int]$RetryCount = 5,
+    [switch]$WhiteBackgroundTransparent
   )
   begin {
     try {
@@ -49,9 +49,21 @@ function New-OpenAIImage {
     catch {
       "Something wrong!"
       $_
+      exit
+    }
+
+    if ($WhiteBackgroundTransparent) {
+      # make white background transparent
+      # magick '.\Monster Truck-sis-20221221_234332_094 copy.png' -fuzz 2% -transparent white output3.png
+      $tempPath = "$($Path)_$([Guid]::NewGuid())"
+      & $OpenAI.cfg.MagickPath $Path -fuzz 2% -transparent white $tempPath
+
+      if (Test-Path -Path $tempPath) {
+        Copy-Item -Path $tempPath -Destination $Path -Force -Verbose
+        Remove-Item -Path $tempPath -Verbose
+      }
     }
   }
-  end {
-      
+  end {      
   }
 }

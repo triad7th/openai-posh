@@ -6,8 +6,8 @@ function Get-OpenAIToken {
     # $token = Get-Content -Path ../api.token | ConvertTo-SecureString -AsPlainText -Force
   }
   process {
-    (Get-Credential -UserName 'OpenAI' -Message 'Type OpenAI Token').Password
+    $OpenAI.Cfg.OpenAIToken = (Get-Credential -UserName 'OpenAI' -Message 'Type OpenAI Token').Password
   }
-  end {      
+  end {
   }
 }

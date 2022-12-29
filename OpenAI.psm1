@@ -14,4 +14,5 @@ foreach ($directory in @('Public')) {
     }
 }
 
+Get-OpenAIToken | Set-OpenAIToken
 Export-ModuleMember -Variable OpenAI
