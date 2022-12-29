@@ -1,0 +1,1 @@
+pwsh -NoExit -File "$PSScriptRoot\UnitTest\enter.ps1"

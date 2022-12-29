@@ -1,0 +1,1 @@
+pwsh '.\UnitTest\test.ps1'
