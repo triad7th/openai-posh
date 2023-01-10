@@ -2,24 +2,27 @@ function New-OpenAIImage {
   [CmdletBinding()]
   param (
     [Parameter(Mandatory)]
-    [string]$Path,
+    $Path,
     [Parameter(Mandatory)]
     [string]$Prompt,
     [securestring]$Token = $OpenAI.cfg.OpenAIToken,
     [int]$RetryCount = 5,
-    [switch]$WhiteBackgroundTransparent
+    [switch]$ImproveBorders,
+    [switch]$WhiteBackgroundTransparent    
   )
   begin {
-    try {
+    try {      
       New-Item -Path $Path -ItemType File -Force -Verbose | Out-Null
-      $filename = (Get-Item -Path $Path).FullName
-      Remove-Item -Path $Path -Force -Verbose
+      $Item = Get-Item -Path $Path
+      $filename = (Get-Item -Path $Item).FullName
+      Remove-Item -Path $Item -Force -Verbose
     }
     catch {
       "File IO error!"
       exit
     }  
     $uri = "https://api.openai.com/v1/images/generations"
+    $response = $null
     # $token = Get-Content -Path ../api.token | ConvertTo-SecureString -AsPlainText -Force
   }
   process {  
@@ -52,14 +55,28 @@ function New-OpenAIImage {
       exit
     }
 
-    if ($WhiteBackgroundTransparent) {
-      # make white background transparent
-      # magick '.\Monster Truck-sis-20221221_234332_094 copy.png' -fuzz 2% -transparent white output3.png
-      $tempPath = "$($Path)_$([Guid]::NewGuid())"
-      & $OpenAI.cfg.MagickPath $Path -fuzz 2% -transparent white $tempPath
-
+    if ($ImproveBorders) {
+      $tempPath = Invoke-ShrinkImage -Path $Item
       if (Test-Path -Path $tempPath) {
-        Copy-Item -Path $tempPath -Destination $Path -Force -Verbose
+        $improvedBordersPath = "$($OpenAI.cfg.TempPath)\$($Item.BaseName)_improved-borders_$([Guid]::NewGuid())$($Item.Extension)"
+        $params = @{
+          Path       = $improvedBordersPath
+          SourcePath = $tempPath.FullName
+          Prompt     = 'just extend the source image. no background. no added stuff.'
+        }
+        New-OpenAIImageEdit @params
+        Remove-Item -Path $tempPath -Verbose
+        if (Test-Path -Path $improvedBordersPath) {
+          Copy-Item -Path $improvedBordersPath -Destination $Item -Force -Verbose
+          Remove-Item -Path $improvedBordersPath -Verbose
+        }
+      }      
+    }
+
+    if ($WhiteBackgroundTransparent) {
+      $tempPath = Invoke-CropBackground -Path $Item
+      if (Test-Path -Path $tempPath) {
+        Copy-Item -Path $tempPath -Destination $Item -Force -Verbose
         Remove-Item -Path $tempPath -Verbose
       }
     }

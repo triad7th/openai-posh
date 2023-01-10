@@ -2,7 +2,7 @@ function New-OpenAIImageEdit {
   [CmdletBinding()]
   param (
     [Parameter(Mandatory)]
-    [string]$Path,
+    $Path,
     [Parameter(Mandatory)]
     [string]$SourcePath,
     [string]$MaskPath,
@@ -14,28 +14,34 @@ function New-OpenAIImageEdit {
   begin {
     try {
       New-Item -Path $Path -ItemType File -Force -Verbose | Out-Null
-      $filename = (Get-Item -Path $Path).FullName
-      Remove-Item -Path $Path -Force -Verbose
+      $Item = Get-Item -Path $Path
+      $filename = (Get-Item -Path $Item).FullName
+      Remove-Item -Path $Item -Force -Verbose
     }
     catch {
       "File IO error!"
       exit
     }  
-    $uri = "https://api.openai.com/v1/images/generations"
-    # $token = Get-Content -Path ../api.token | ConvertTo-SecureString -AsPlainText -Force
+    $uri = "https://api.openai.com/v1/images/edits"
+    $response = $null
   }
   process {  
-    $body = @{
+    $form = @{
+      image           = Get-Item $SourcePath
       prompt          = $Prompt
       n               = 1
       size            = "1024x1024"
       response_format = "b64_json"
-    } | ConvertTo-Json
-        
+    }
+    if ($MaskPath) { $form.mask = Get-Item $MaskPath }
+
+    # Write-Host ($form | Out-String)
+    # Write-Host ($Path | Out-String)    
+    
     try {
       while (!$response) {
         try {
-          $response = Invoke-RestMethod -Uri $uri -Method Post -Authentication Bearer -Token $Token -Body $body -ContentType "application/json" -Verbose
+          $response = Invoke-RestMethod -Uri $uri -Method Post -Authentication Bearer -Token $Token -Form $form -ContentType "multipart/form-data" -Verbose
         }
         catch {
           $RetryCount--
