@@ -5,7 +5,7 @@ param (
 )
 
 $fam = @(
-  @{ name = "dad"; prompt = "A high-quality illustration of an anthropomorphic Daddy $Subject with mustache and thick glasses. Kids friendly cartoon style digital art. White background. No shadow." }
+  @{ name = "dad"; prompt = "A high-quality illustration of an anthropomorphic Daddy $Subject with mustache and thick glasses. Kids friendly cartoon style digital art. White background. No shadow." },
   @{ name = "mom"; prompt = "A high-quality illustration of an anthropomorphic Mommy $Subject with earrings and thick lips. Kids friendly cartoon style digital art. White background. No shadow." },
   @{ name = "bro"; prompt = "A high-quality illustration of an anthropomorphic Brother $Subject with baseball hat and silly smile. Kids friendly cartoon style digital art. White background. No shadow." },
   @{ name = "sis"; prompt = "A high-quality illustration of an anthropomorphic Sister $Subject with lady hat, earrings, pretty face and nice smile. Kids friendly cartoon style digital art. White background. No shadow." },
