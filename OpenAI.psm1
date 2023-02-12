@@ -14,8 +14,10 @@ foreach ($directory in @('Public')) {
   }
 }
 
-if (Test-Path '.\api.token') {
-  Get-Content -Path '.\api.token' | ConvertTo-SecureString | Set-OpenAIToken
+"$($OpenAI.Cfg.OpenAIPath)\api.token"
+
+if (Test-Path -Path "$($OpenAI.Cfg.OpenAIPath)\api.token") {
+  Get-Content -Path "$($OpenAI.Cfg.OpenAIPath)\api.token" | ConvertTo-SecureString | Set-OpenAIToken
 }
 else {
   Get-OpenAIToken | Set-OpenAIToken

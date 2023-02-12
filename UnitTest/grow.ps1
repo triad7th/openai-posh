@@ -34,8 +34,7 @@ function box([float]$cw, [float]$ch, [float]$x, [float]$y, [float]$w, [float]$h,
   $originalPath = "$($OpenAI.cfg.TempPath)\$($item.BaseName)_$([Guid]::NewGuid())$($item.Extension)"  
   $newPath = "$($OpenAI.cfg.TempPath)\$($item.BaseName)_$([Guid]::NewGuid())$($item.Extension)"
 
-  "rectangle $absX, $absY $($absX + $w), $($absY + $h)"
-
+  # "rectangle $absX, $absY $($absX + $w), $($absY + $h)"
   Copy-Item -Path $item -Destination $originalPath -Force
   magick convert `
     -size $canvasSize xc:none `
@@ -50,66 +49,48 @@ function box([float]$cw, [float]$ch, [float]$x, [float]$y, [float]$w, [float]$h,
   Remove-Item -Path $newPath -Force
 }
 
-# $width  = 3096
-# $height = 2048
+# begin
+$ow = [float]648.6
+$oh = [float]35.8
+$l = [float]102.4
+$gw = $ow + $l
+$gh = $oh + $l
+$name = "test"
 
-# $lefts = @()
-# $tops = @()
-# $i = 0
+canvas ($gw) ($gh) $name
+box $gw $gh (-$ow / 2) (-$oh / 2) $ow $oh $name
 
-# $left = @{ x = -1 * ($width / 2); y = -512 * $i }
-# $top = @{ x = -512 * $i; y = -1 * ($height / 2) }
-        
-# $lefts += $left
-# $tops += $top
+$vault = [PSCustomObject]@{
+  blocks = 0
+  list = @()
+}
 
-# Write-HostTitle "lefts"
-# $lefts
+function square([float]$x, [float]$y, [float]$l) {
+  if (($x -lt -$ow/2) -or ($x -gt $ow/2)) { $vault.blocks++; return }
+  if (($y -lt -$oh/2) -or ($y -gt $oh/2)) { $vault.blocks++; return }
 
-# Write-HostTitle "tops"
-# $tops
+  if ($vault.list | Where-Object x -eq $x | Where-Object y -eq $y) { $vault.blocks++; return }
 
-$ow = 309.6
-$oh = 204.8
+  #box $gw $gh ($x - $l/2) ($y - $l/2) $l $l $name
+  $vault.list = @($vault.list) + ([PSCustomObject]@{x = $x; y = $y})
+}
 
-$gw = $ow + 102.4
-$gh = $oh + 102.4
+for ($i = 0; $vault.blocks -lt 8; $i++) {
+  $vault.blocks = 0
+  square (+$ow/2) ((+$l/2) * $i) $l
+  square (+$ow/2) ((-$l/2) * $i) $l
+  square (-$ow/2) ((+$l/2) * $i) $l
+  square (-$ow/2) ((-$l/2) * $i) $l
+  square ((+$l/2) * $i) (+$oh/2) $l
+  square ((-$l/2) * $i) (+$oh/2) $l
+  square ((+$l/2) * $i) (-$oh/2) $l
+  square ((-$l/2) * $i) (-$oh/2) $l
+  Write-Host "blocks: $($vault.blocks)"    
+}
 
-canvas ($gw) ($gh) test
-box $gw $gh (-$ow / 2) (-$oh / 2) 309.6 204.8 test
+square (+$ow/2) (+$oh/2) $l
+square (+$ow/2) (-$oh/2) $l
+square (-$ow/2) (+$oh/2) $l
+square (-$ow/2) (-$oh/2) $l
 
-box $gw $gh (-154.8 - 51.2) -51.2 102.4 102.4 test
-box $gw $gh -51.2 (-102.4 - 51.2) 102.4 102.4 test
-
-box $gw $gh (-154.8 - 51.2) (-51.2 - 51.2) 102.4 102.4 test
-box $gw $gh (-51.2 - 51.2) (-102.4 - 51.2) 102.4 102.4 test
-
-box $gw $gh (-154.8 - 51.2) (-51.2 - 51.2 - 51.2) 102.4 102.4 test
-#box $gw $gh (-51.2 - 51.2 - 51.2) (-102.4 - 51.2) 102.4 102.4 test
-
-box $gw $gh (154.8 - 51.2) -51.2 102.4 102.4 test
-box $gw $gh -51.2 (102.4 - 51.2) 102.4 102.4 test
-
-box $gw $gh (154.8 - 51.2) (-51.2 + 51.2) 102.4 102.4 test
-box $gw $gh (-51.2 + 51.2) (102.4 - 51.2) 102.4 102.4 test
-
-box $gw $gh (154.8 - 51.2) (-51.2 + 51.2 + 51.2) 102.4 102.4 test
-#box $gw $gh (-51.2 + 51.2 + 51.2) (102.4 - 51.2) 102.4 102.4 test
-
-box $gw $gh (-154.8 - 51.2) -51.2 102.4 102.4 test
-box $gw $gh -51.2 (102.4 - 51.2) 102.4 102.4 test
-
-box $gw $gh (-154.8 - 51.2) (-51.2 + 51.2) 102.4 102.4 test
-box $gw $gh (-51.2 - 51.2) (102.4 - 51.2) 102.4 102.4 test
-
-box $gw $gh (-154.8 - 51.2) (-51.2 + 51.2 + 51.2) 102.4 102.4 test
-#box $gw $gh (-51.2 - 51.2 - 51.2) (102.4 - 51.2) 102.4 102.4 test
-
-box $gw $gh (+154.8 - 51.2) -51.2 102.4 102.4 test
-box $gw $gh -51.2 (-102.4 - 51.2) 102.4 102.4 test
-
-box $gw $gh (+154.8 - 51.2) (-51.2 - 51.2) 102.4 102.4 test
-box $gw $gh (-51.2 + 51.2) (-102.4 - 51.2) 102.4 102.4 test
-
-box $gw $gh (+154.8 - 51.2) (-51.2 - 51.2 - 51.2) 102.4 102.4 test
-#box $gw $gh (-51.2 + 51.2 + 51.2) (-102.4 - 51.2) 102.4 102.4 test
+$vault.list
