@@ -5,24 +5,29 @@ param (
   [string]$Dest,
   [decimal]$GrowAmount,
   [decimal]$MaxWidth,
-  [decimal]$MaxHeight
+  [decimal]$MaxHeight,
+  [switch]$WhatIf
 )
 begin {
   try {
     $SrcItem = Get-Item -Path $Src
     $SrcInfo = Get-ImageInformation -Path $SrcItem
-    if (!$Dest) { 
-      $Dest = "$($SrcItem.Directory)\$($SrcItem.BaseName)_result_$([Guid]::NewGuid())$($SrcItem.Extension)"
-      New-Item -Path $Dest | Out-Null
-    }
-    $DestItem = Get-Item -Path $Dest
     if (!$GrowAmount) { $GrowAmount = [Math]::Max($SrcInfo.Width, $SrcInfo.Height) * 0.1 }
     if (!$MaxWidth) { $MaxWidth = $SrcInfo.Width + $GrowAmount }
     if (!$MaxHeight) { $MaxHeight = $SrcInfo.Height + $GrowAmount }
-    $DestInfo = [PSCustomObject]@{
-      GrowAmount = $GrowAmount
-      MaxWidth = $MaxWidth
-      MaxHeight = $MaxHeight
+
+    $IsGrowable = ($SrcInfo.Width -lt $MaxWidth) -or ($SrcInfo.Height -lt $MaxHeight)
+    if ($IsGrowable) {
+      if (!$Dest) { 
+        $Dest = "$($SrcItem.Directory)\$($SrcItem.BaseName)_result_$([Guid]::NewGuid())$($SrcItem.Extension)"
+        New-Item -Path $Dest | Out-Null
+      }
+      $DestItem = Get-Item -Path $Dest
+      $DestInfo = [PSCustomObject]@{
+        GrowAmount = $GrowAmount
+        MaxWidth = $MaxWidth
+        MaxHeight = $MaxHeight
+      }
     }
   }
   catch {
@@ -31,20 +36,6 @@ begin {
   }  
 }
 process {
-  # make white background transparent
-  # magick '.\Monster Truck-sis-20221221_234332_094 copy.png' -fuzz 2% -transparent white output3.png
-  # $backgroundPath = "$($OpenAI.cfg.TempPath)\$($item.BaseName)_bg_$([Guid]::NewGuid())$($item.Extension)"
-
-  #magick -size 1024x1024 canvas:white -transparent white abc_background.png
-  # & $OpenAI.cfg.MagickPath -size 1024x1024 canvas:red -transparent red $backgroundPath  
-  $SrcInfo
-  $DestInfo
-  
-  Write-OutputTitle "Source"
-  $SrcItem
-  Write-OutputTitle "Destination"
-  $DestItem
-
   $touchResult = [PSCustomObject]@{
     blocks = 0
     list = @()
@@ -59,50 +50,48 @@ process {
     $touchResult.list = @($touchResult.list) + ([PSCustomObject]@{phase = $phase;x = $x; y = $y})
   }
 
-  function mock() {
-    $size = "$($MaxWidth + 1)x$($MaxHeight + 1)"
-    $centerX = $MaxWidth / 2
-    $centerY = $MaxHeight / 2
-        
-    $cmd = @()
-    $cmd += "magick convert ``"
-    $cmd += " -size $size xc:none ``"    
-    foreach ($item in $touchResult.List) {
-      $hsl = "hsl($(Get-Random -Minimum 1 -Maximum 360), 100%, 50%)"  
-      $cmd += " -strokewidth 1 -fill none -stroke '$hsl' ``"
-
-      $left = $centerX + $item.x - $GrowAmount / 2
-      $top = $centerY + $item.y - $GrowAmount / 2      
-      $right = $left + $GrowAmount
-      $bottom = $top + $GrowAmount
-      
-      $cmd += " -draw ""rectangle $left, $top $right, $bottom"" ``"      
+  if ($IsGrowable) {
+    $g = $DestInfo.GrowAmount
+    for ($i = 0; $touchResult.blocks -lt 8; $i++) {
+      $touchResult.blocks = 0
+      touch (+$SrcInfo.Width/2) ((+$g/2) * $i)$i
+      touch (+$SrcInfo.Width/2) ((-$g/2) * $i) $i
+      touch (-$SrcInfo.Width/2) ((+$g/2) * $i) $i
+      touch (-$SrcInfo.Width/2) ((-$g/2) * $i) $i
+      touch ((+$g/2) * $i) (+$SrcInfo.Height/2) $i
+      touch ((-$g/2) * $i) (+$SrcInfo.Height/2) $i
+      touch ((+$g/2) * $i) (-$SrcInfo.Height/2) $i
+      touch ((-$g/2) * $i) (-$SrcInfo.Height/2) $i
+      #Write-Host "blocks: $($touchResult.blocks)" 
     }
-    $cmd += " $($DestItem.FullName)"
-    return $cmd
+  
+    touch (+$SrcInfo.Width/2) (+$SrcInfo.Height/2) $i
+    touch (+$SrcInfo.Width/2) (-$SrcInfo.Height/2) $i
+    touch (-$SrcInfo.Width/2) (+$SrcInfo.Height/2) $i
+    touch (-$SrcInfo.Width/2) (-$SrcInfo.Height/2) $i
+     
+    if (!$WhatIf) {
+      $cmd = .\Get-ImageMagickCommand.ps1 `
+        -Type FakeGrow `
+        -SrcPath $SrcItem.FullName `
+        -DestPath $DestItem.FullName `
+        -Width ($SrcInfo.Width + $GrowAmount) `
+        -Height ($SrcInfo.Height + $GrowAmount) `
+        -GrowAmount $GrowAmount `
+        -GrowPlan $touchResult.List
+
+      Invoke-Expression -Command ($cmd | Out-String) | Out-Null
+    }
+  }  
+
+  return [PSCustomObject]@{
+    SourceItem = $SrcItem
+    SourceInfo = $SrcInfo
+    DestinationItem = $DestItem
+    DestinationInfo = $DestInfo
+    IsGrowable = ($SrcInfo.Width -lt $DestInfo.MaxWidth) -or ($SrcInfo.Height -lt $DestInfo.MaxHeight)
+    GrowPlan = $touchResult.List
   }
-
-  $g = $DestInfo.GrowAmount
-  for ($i = 0; $touchResult.blocks -lt 8; $i++) {
-    $touchResult.blocks = 0
-    touch (+$SrcInfo.Width/2) ((+$g/2) * $i) $g $i
-    touch (+$SrcInfo.Width/2) ((-$g/2) * $i) $g $i
-    touch (-$SrcInfo.Width/2) ((+$g/2) * $i) $g $i
-    touch (-$SrcInfo.Width/2) ((-$g/2) * $i) $g $i
-    touch ((+$g/2) * $i) (+$SrcInfo.Height/2) $g $i
-    touch ((-$g/2) * $i) (+$SrcInfo.Height/2) $g $i
-    touch ((+$g/2) * $i) (-$SrcInfo.Height/2) $g $i
-    touch ((-$g/2) * $i) (-$SrcInfo.Height/2) $g $i
-    #Write-Host "blocks: $($touchResult.blocks)" 
-  }
-
-  touch (+$SrcInfo.Width/2) (+$SrcInfo.Height/2) $g $i
-  touch (+$SrcInfo.Width/2) (-$SrcInfo.Height/2) $g $i
-  touch (-$SrcInfo.Width/2) (+$SrcInfo.Height/2) $g $i
-  touch (-$SrcInfo.Width/2) (-$SrcInfo.Height/2) $g $i
-
-  $touchResult.List | ft
-  Invoke-Expression -Command (mock | Out-String)
 }
 end {      
 }
