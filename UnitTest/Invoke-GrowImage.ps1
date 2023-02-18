@@ -17,9 +17,13 @@ begin {
     if (!$MaxHeight) { $MaxHeight = $SrcInfo.Height + $GrowAmount }
 
     $IsGrowable = ($SrcInfo.Width -lt $MaxWidth) -or ($SrcInfo.Height -lt $MaxHeight)
-    if ($IsGrowable) {
+    $IsDone = ($SrcInfo.Width -eq $MaxWidth) -and ($SrcInfo.Height -eq $MaxHeight)
+    $IsTrimmable = ($SrcInfo.Width -ge $MaxWidht) -or ($SrcInfo.Height -ge -$MaxHeight)
+    if (!$IsDone) {
       if (!$Dest) { 
         $Dest = "$($SrcItem.Directory)\$($SrcItem.BaseName)_result_$([Guid]::NewGuid())$($SrcItem.Extension)"
+      }
+      if (!(Test-Path -Path $Dest)) {
         New-Item -Path $Dest | Out-Null
       }
       $DestItem = Get-Item -Path $Dest
@@ -47,14 +51,14 @@ process {
   
     if ($touchResult.list | Where-Object x -eq $x | Where-Object y -eq $y) { $touchResult.blocks++; return }
   
-    $touchResult.list = @($touchResult.list) + ([PSCustomObject]@{phase = $phase;x = $x; y = $y})
+    $touchResult.list = @($touchResult.list) + ([PSCustomObject]@{phase = $phase;x = $x; y = $y; file = $null})
   }
 
   if ($IsGrowable) {
     $g = $DestInfo.GrowAmount
     for ($i = 0; $touchResult.blocks -lt 8; $i++) {
       $touchResult.blocks = 0
-      touch (+$SrcInfo.Width/2) ((+$g/2) * $i)$i
+      touch (+$SrcInfo.Width/2) ((+$g/2) * $i) $i
       touch (+$SrcInfo.Width/2) ((-$g/2) * $i) $i
       touch (-$SrcInfo.Width/2) ((+$g/2) * $i) $i
       touch (-$SrcInfo.Width/2) ((-$g/2) * $i) $i
@@ -69,8 +73,8 @@ process {
     touch (+$SrcInfo.Width/2) (-$SrcInfo.Height/2) $i
     touch (-$SrcInfo.Width/2) (+$SrcInfo.Height/2) $i
     touch (-$SrcInfo.Width/2) (-$SrcInfo.Height/2) $i
-     
-    if (!$WhatIf) {
+
+    if ($WhatIf) {
       $cmd = .\Get-ImageMagickCommand.ps1 `
         -Type FakeGrow `
         -SrcPath $SrcItem.FullName `
@@ -79,17 +83,63 @@ process {
         -Height ($SrcInfo.Height + $GrowAmount) `
         -GrowAmount $GrowAmount `
         -GrowPlan $touchResult.List
-
+  
       Invoke-Expression -Command ($cmd | Out-String) | Out-Null
+    } else {
+      function pos([decimal]$v, $pad) {
+        if ($v -ge 0) { return "+$($v.ToString().PadLeft($pad - 1, '0'))" }
+          else { return "-$([Math]::Abs($v).ToString().PadLeft($pad - 1, '0'))" }
+      }
+      $phasePadding = ($touchResult.list.phase | Sort-Object -Descending | Select-Object -First 1).ToString().Length
+      $xPadding = [int]($touchResult.list.x | Select-Object @{Name='v'; Expression={($_.ToString() -replace '-', '').Length + 1}} | Sort-Object -Property v -Descending | Select-Object -First 1).v
+      $yPadding = [int]($touchResult.list.y | Select-Object @{Name='v'; Expression={($_.ToString() -replace '-', '').Length + 1}} | Sort-Object -Property v -Descending | Select-Object -First 1).v
+      foreach($phase in ($touchResult.List.Phase | Select-Object -Unique)) {
+        foreach($item in $touchResult.list | Where-Object -Property Phase -eq $phase) {
+          $phaseStr = $item.phase.ToString().PadLeft($phasePadding, '0')
+          $DestPath = "$($DestItem.DirectoryName)\$($DestItem.BaseName)_$($phaseStr)_$(pos $item.x $xPadding)_$(pos $item.y $yPadding)$($DestItem.Extension)"
+          $cmd = .\Get-ImageMagickCommand.ps1 `
+            -Type Cut `
+            -SrcPath $SrcItem.FullName `
+            -DestPath  $DestPath `
+            -Width ($SrcInfo.Width + $GrowAmount) `
+            -Height ($SrcInfo.Height + $GrowAmount) `
+            -GrowAmount $GrowAmount `
+            -GrowItem $item        
+            
+          Invoke-Expression -Command ($cmd | Out-String) | Out-Null
+          $item.file = Get-Item -Path $DestPath
+        }
+      }      
     }
-  }  
+    if ($IsTrimmable) {
+      $cmd = .\Get-ImageMagickCommand.ps1 `
+          -Type Finalize `
+          -SrcPath $DestItem.FullName `
+          -DestPath $DestItem.FullName `
+          -Width $MaxWidth `
+          -Height $MaxHeight
+      # Invoke-Expression -Command ($cmd | Out-String) | Out-Null
+    }
+  } else {
+    if (!$IsDone) {
+      $cmd = .\Get-ImageMagickCommand.ps1 `
+          -Type Finalize `
+          -SrcPath $SrcItem.FullName `
+          -DestPath $DestItem.FullName `
+          -Width $MaxWidth `
+          -Height $MaxHeight
+      # Invoke-Expression -Command ($cmd | Out-String) | Out-Null
+    } 
+  }
 
   return [PSCustomObject]@{
     SourceItem = $SrcItem
     SourceInfo = $SrcInfo
     DestinationItem = $DestItem
     DestinationInfo = $DestInfo
-    IsGrowable = ($SrcInfo.Width -lt $DestInfo.MaxWidth) -or ($SrcInfo.Height -lt $DestInfo.MaxHeight)
+    IsGrowable = $IsGrowable
+    IsDone = $IsDone
+    IsTrimmable = $IsTrimmable
     GrowPlan = $touchResult.List
   }
 }
