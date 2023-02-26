@@ -4,11 +4,14 @@ function Set-OpenAIToken {
     [Parameter(ValueFromPipeLine, Mandatory)]
     [securestring]$Token    
   )
+
   begin {
   }
+
   process {
     $OpenAI.Cfg.OpenAIToken = $Token
   }
+  
   end {
   }
 }

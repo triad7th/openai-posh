@@ -1,0 +1,801 @@
+**********************
+PowerShell transcript start
+Start time: 20230224192041
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 992900
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024+580+0 `  c:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+580_+000.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+580_+000.png -composite `  -strokewidth 2 -fill 'hsl(342, 100%, 50%)' -stroke 'hsl(342, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+580_+000.png c:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+580_+000.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+580_+000.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: Performing the operation "Create File" on target "Destination: C:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+580_+000.png".
+VERBOSE: Performing the operation "Remove File" on target "C:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+580_+000.png".
+
+Get-Item: C:\Users\triad_000\Documents\PowerShell\Modules\OpenAI\Public\Functions\New-OpenAIImageEdit.ps1:30
+Line |
+  30 |        image           = Get-Item $SourcePath
+     |                          ~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+580_+000.png' because it does not exist.
+VERBOSE: HTTP/1.1 POST with 727-byte payload
+VERBOSE: received 196-byte response of content type application/json
+>> TerminatingError(Invoke-RestMethod): "{
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+"
+Something wrong! {
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+**********************
+PowerShell transcript end
+End time: 20230224192043
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192042
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 959844
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024+0-772 `  c:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_-772.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_-772.png -composite `  -strokewidth 2 -fill 'hsl(342, 100%, 50%)' -stroke 'hsl(342, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_-772.png c:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_-772.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_-772.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: Performing the operation "Create File" on target "Destination: C:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_-772.png".
+VERBOSE: Performing the operation "Remove File" on target "C:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_-772.png".
+
+Get-Item: C:\Users\triad_000\Documents\PowerShell\Modules\OpenAI\Public\Functions\New-OpenAIImageEdit.ps1:30
+Line |
+  30 |        image           = Get-Item $SourcePath
+     |                          ~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_-772.png' because it does not exist.
+VERBOSE: HTTP/1.1 POST with 727-byte payload
+VERBOSE: received 196-byte response of content type application/json
+>> TerminatingError(Invoke-RestMethod): "{
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+"
+Something wrong! {
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+**********************
+PowerShell transcript end
+End time: 20230224192045
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192042
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 989436
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024+0+772 `  c:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_+772.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_+772.png -composite `  -strokewidth 2 -fill 'hsl(342, 100%, 50%)' -stroke 'hsl(342, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_+772.png c:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_+772.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_+772.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: Performing the operation "Create File" on target "Destination: C:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_+772.png".
+VERBOSE: Performing the operation "Remove File" on target "C:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_+772.png".
+
+Get-Item: C:\Users\triad_000\Documents\PowerShell\Modules\OpenAI\Public\Functions\New-OpenAIImageEdit.ps1:30
+Line |
+  30 |        image           = Get-Item $SourcePath
+     |                          ~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\repos\openai-posh\temp\ally-expanded_19780637-749d-41e4-a68d-eb12ccd4d5b6_0_+000_+772.png' because it does not exist.
+VERBOSE: HTTP/1.1 POST with 727-byte payload
+VERBOSE: received 196-byte response of content type application/json
+>> TerminatingError(Invoke-RestMethod): "{
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+"
+Something wrong! {
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+**********************
+PowerShell transcript end
+End time: 20230224192045
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192047
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 994128
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024+580+512 `  c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_+512.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_+512.png -composite `  -strokewidth 2 -fill 'hsl(84, 100%, 50%)' -stroke 'hsl(84, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_+512.png c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_+512.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_+512.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: Performing the operation "Create File" on target "Destination: C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_+512.png".
+VERBOSE: Performing the operation "Remove File" on target "C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_+512.png".
+
+Get-Item: C:\Users\triad_000\Documents\PowerShell\Modules\OpenAI\Public\Functions\New-OpenAIImageEdit.ps1:30
+Line |
+  30 |        image           = Get-Item $SourcePath
+     |                          ~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_+512.png' because it does not exist.
+VERBOSE: HTTP/1.1 POST with 727-byte payload
+VERBOSE: received 196-byte response of content type application/json
+>> TerminatingError(Invoke-RestMethod): "{
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+"
+Something wrong! {
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+**********************
+PowerShell transcript end
+End time: 20230224192053
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192049
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 990392
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024+512+772 `  c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+512_+772.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+512_+772.png -composite `  -strokewidth 2 -fill 'hsl(84, 100%, 50%)' -stroke 'hsl(84, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+512_+772.png c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+512_+772.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+512_+772.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: Performing the operation "Create File" on target "Destination: C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+512_+772.png".
+VERBOSE: Performing the operation "Remove File" on target "C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+512_+772.png".
+
+Get-Item: C:\Users\triad_000\Documents\PowerShell\Modules\OpenAI\Public\Functions\New-OpenAIImageEdit.ps1:30
+Line |
+  30 |        image           = Get-Item $SourcePath
+     |                          ~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+512_+772.png' because it does not exist.
+VERBOSE: HTTP/1.1 POST with 727-byte payload
+VERBOSE: received 196-byte response of content type application/json
+>> TerminatingError(Invoke-RestMethod): "{
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+"
+Something wrong! {
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+**********************
+PowerShell transcript end
+End time: 20230224192053
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192048
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 989208
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024-580+512 `  c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_+512.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_+512.png -composite `  -strokewidth 2 -fill 'hsl(84, 100%, 50%)' -stroke 'hsl(84, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_+512.png c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_+512.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_+512.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: Performing the operation "Create File" on target "Destination: C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_+512.png".
+VERBOSE: Performing the operation "Remove File" on target "C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_+512.png".
+
+Get-Item: C:\Users\triad_000\Documents\PowerShell\Modules\OpenAI\Public\Functions\New-OpenAIImageEdit.ps1:30
+Line |
+  30 |        image           = Get-Item $SourcePath
+     |                          ~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_+512.png' because it does not exist.
+VERBOSE: HTTP/1.1 POST with 727-byte payload
+VERBOSE: received 196-byte response of content type application/json
+>> TerminatingError(Invoke-RestMethod): "{
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+"
+Something wrong! {
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+**********************
+PowerShell transcript end
+End time: 20230224192053
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192049
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 994512
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024-512+772 `  c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-512_+772.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-512_+772.png -composite `  -strokewidth 2 -fill 'hsl(84, 100%, 50%)' -stroke 'hsl(84, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-512_+772.png c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-512_+772.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-512_+772.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: Performing the operation "Create File" on target "Destination: C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-512_+772.png".
+VERBOSE: Performing the operation "Remove File" on target "C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-512_+772.png".
+
+Get-Item: C:\Users\triad_000\Documents\PowerShell\Modules\OpenAI\Public\Functions\New-OpenAIImageEdit.ps1:30
+Line |
+  30 |        image           = Get-Item $SourcePath
+     |                          ~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-512_+772.png' because it does not exist.
+VERBOSE: HTTP/1.1 POST with 727-byte payload
+VERBOSE: received 196-byte response of content type application/json
+>> TerminatingError(Invoke-RestMethod): "{
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+"
+Something wrong! {
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+**********************
+PowerShell transcript end
+End time: 20230224192053
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192048
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 993152
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024-580-512 `  c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_-512.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_-512.png -composite `  -strokewidth 2 -fill 'hsl(84, 100%, 50%)' -stroke 'hsl(84, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_-512.png c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_-512.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_-512.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: Performing the operation "Create File" on target "Destination: C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_-512.png".
+VERBOSE: Performing the operation "Remove File" on target "C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_-512.png".
+
+Get-Item: C:\Users\triad_000\Documents\PowerShell\Modules\OpenAI\Public\Functions\New-OpenAIImageEdit.ps1:30
+Line |
+  30 |        image           = Get-Item $SourcePath
+     |                          ~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_-580_-512.png' because it does not exist.
+VERBOSE: HTTP/1.1 POST with 727-byte payload
+VERBOSE: received 196-byte response of content type application/json
+>> TerminatingError(Invoke-RestMethod): "{
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+"
+Something wrong! {
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+**********************
+PowerShell transcript end
+End time: 20230224192053
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192047
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 988968
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024+580-512 `  c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_-512.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_-512.png -composite `  -strokewidth 2 -fill 'hsl(84, 100%, 50%)' -stroke 'hsl(84, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_-512.png c:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_-512.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_-512.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: Performing the operation "Create File" on target "Destination: C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_-512.png".
+VERBOSE: Performing the operation "Remove File" on target "C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_-512.png".
+
+Get-Item: C:\Users\triad_000\Documents\PowerShell\Modules\OpenAI\Public\Functions\New-OpenAIImageEdit.ps1:30
+Line |
+  30 |        image           = Get-Item $SourcePath
+     |                          ~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\repos\openai-posh\temp\ally-expanded_5ff3f8d5-1b4a-4a05-974b-54e255494f7a_1_+580_-512.png' because it does not exist.
+VERBOSE: HTTP/1.1 POST with 727-byte payload
+VERBOSE: received 196-byte response of content type application/json
+>> TerminatingError(Invoke-RestMethod): "{
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+"
+Something wrong! {
+  "error": {
+    "code": null,
+    "message": "Missing image file in request. (Perhaps you specified `image` in the wrong format?)",
+    "param": null,
+    "type": "invalid_request_error"
+  }
+}
+**********************
+PowerShell transcript end
+End time: 20230224192053
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192215
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 994464
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024+580+0 `  c:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_+580_+000.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_+580_+000.png -composite `  -strokewidth 2 -fill 'hsl(321, 100%, 50%)' -stroke 'hsl(321, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_+580_+000.png c:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_+580_+000.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_+580_+000.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: HTTP/1.1 POST with 502756-byte payload
+VERBOSE: received 4197382-byte response of content type application/json
+VERBOSE: Content encoding: utf-8
+
+**********************
+PowerShell transcript end
+End time: 20230224192232
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192216
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 991964
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024-580+0 `  c:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_-580_+000.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_-580_+000.png -composite `  -strokewidth 2 -fill 'hsl(321, 100%, 50%)' -stroke 'hsl(321, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_-580_+000.png c:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_-580_+000.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_-580_+000.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: HTTP/1.1 POST with 586800-byte payload
+VERBOSE: received 4197382-byte response of content type application/json
+VERBOSE: Content encoding: utf-8
+
+**********************
+PowerShell transcript end
+End time: 20230224192235
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192216
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 993724
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024+0-772 `  c:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_+000_-772.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_+000_-772.png -composite `  -strokewidth 2 -fill 'hsl(321, 100%, 50%)' -stroke 'hsl(321, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_+000_-772.png c:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_+000_-772.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_1ab20112-a6fe-4baf-be06-c7a066a19e26_0_+000_-772.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: HTTP/1.1 POST with 604127-byte payload
+VERBOSE: received 4197382-byte response of content type application/json
+VERBOSE: Content encoding: utf-8
+
+**********************
+PowerShell transcript end
+End time: 20230224192237
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192241
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 989152
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024+580+512 `  c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_+580_+512.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_+580_+512.png -composite `  -strokewidth 2 -fill 'hsl(162, 100%, 50%)' -stroke 'hsl(162, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_+580_+512.png c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_+580_+512.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_+580_+512.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: HTTP/1.1 POST with 886130-byte payload
+VERBOSE: received 4197382-byte response of content type application/json
+VERBOSE: Content encoding: utf-8
+
+**********************
+PowerShell transcript end
+End time: 20230224192305
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192243
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 984824
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024-512+772 `  c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_-512_+772.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_-512_+772.png -composite `  -strokewidth 2 -fill 'hsl(162, 100%, 50%)' -stroke 'hsl(162, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_-512_+772.png c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_-512_+772.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_-512_+772.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: HTTP/1.1 POST with 826767-byte payload
+VERBOSE: received 4197382-byte response of content type application/json
+VERBOSE: Content encoding: utf-8
+
+**********************
+PowerShell transcript end
+End time: 20230224192307
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192241
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 992604
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024+580-512 `  c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_+580_-512.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_+580_-512.png -composite `  -strokewidth 2 -fill 'hsl(162, 100%, 50%)' -stroke 'hsl(162, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_+580_-512.png c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_+580_-512.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_+580_-512.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: HTTP/1.1 POST with 907043-byte payload
+VERBOSE: received 4197382-byte response of content type application/json
+VERBOSE: Content encoding: utf-8
+
+**********************
+PowerShell transcript end
+End time: 20230224192307
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192245
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 994668
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024-512-772 `  c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_-512_-772.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_-512_-772.png -composite `  -strokewidth 2 -fill 'hsl(162, 100%, 50%)' -stroke 'hsl(162, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_-512_-772.png c:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_-512_-772.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_54d3d568-7601-4ede-b4b5-8daa6efc87a2_1_-512_-772.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: HTTP/1.1 POST with 829058-byte payload
+VERBOSE: received 4197382-byte response of content type application/json
+VERBOSE: Content encoding: utf-8
+
+**********************
+PowerShell transcript end
+End time: 20230224192309
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192316
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 992816
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024+580+772 `  c:\repos\openai-posh\temp\ally-expanded_83207f55-e6d1-488e-9619-9a5706389809_3_+580_+772.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_83207f55-e6d1-488e-9619-9a5706389809_3_+580_+772.png -composite `  -strokewidth 2 -fill 'hsl(81, 100%, 50%)' -stroke 'hsl(81, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_83207f55-e6d1-488e-9619-9a5706389809_3_+580_+772.png c:\repos\openai-posh\temp\ally-expanded_83207f55-e6d1-488e-9619-9a5706389809_3_+580_+772.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_83207f55-e6d1-488e-9619-9a5706389809_3_+580_+772.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: HTTP/1.1 POST with 1181866-byte payload
+VERBOSE: received 4197382-byte response of content type application/json
+VERBOSE: Content encoding: utf-8
+
+**********************
+PowerShell transcript end
+End time: 20230224192337
+**********************
+**********************
+PowerShell transcript start
+Start time: 20230224192317
+Username: TI7DEV\triad_000
+RunAs User: TI7DEV\triad_000
+Configuration Name: 
+Machine: TI7DEV (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.dll -s -NoLogo -NoProfile -wd C:\repos\openai-posh\UnitTest
+Process ID: 989400
+PSVersion: 7.3.3
+PSEdition: Core
+GitCommitId: 7.3.3
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.0, 7.3.3
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+magick convert `  -size 2184x2568 xc:none `  -gravity center .\ally-expanded.png -composite `  -gravity center -crop 1024x1024-580+772 `  c:\repos\openai-posh\temp\ally-expanded_83207f55-e6d1-488e-9619-9a5706389809_3_-580_+772.png magick convert `  -size 1024x1024 xc:none `  -gravity center c:\repos\openai-posh\temp\ally-expanded_83207f55-e6d1-488e-9619-9a5706389809_3_-580_+772.png -composite `  -strokewidth 2 -fill 'hsl(81, 100%, 50%)' -stroke 'hsl(81, 100%, 50%)' `  -draw "fill-opacity 0.1 rectangle 0, 0 1023, 1023" `  c:\repos\openai-posh\temp\ally-expanded_83207f55-e6d1-488e-9619-9a5706389809_3_-580_+772.png c:\repos\openai-posh\temp\ally-expanded_83207f55-e6d1-488e-9619-9a5706389809_3_-580_+772.png
+>>>>>>>>>>>>>>>>>C:\repos\openai-posh\temp\ally-expanded_83207f55-e6d1-488e-9619-9a5706389809_3_-580_+772.png
+@{CommonParameters=True; details=; Syntax=; parameters=; inputTypes=; returnValues=; aliases=None
+; remarks=None; alertSet=; description=; examples=; Synopsis=
+New-OpenAIImageEdit [-Path] <Object> [-SourcePath] <string> [[-MaskPath] <string>] [-Prompt] <string> [[-Token] <securestring>] [[-RetryCount] <int>] [<CommonParameters>]
+; ModuleName=OpenAI; nonTerminatingErrors=; xmlns:command=http://schemas.microsoft.com/maml/dev/command/2004/10; xmlns:dev=http://schemas.microsoft.com/maml/dev/2004/10; xmlns:maml=http://schemas.microsoft.com/maml/2004/10; Name=New-OpenAIImageEdit; Category=Function; Component=; Role=; Functionality=}
+VERBOSE: HTTP/1.1 POST with 1230637-byte payload
+VERBOSE: received 4197382-byte response of content type application/json
+VERBOSE: Content encoding: utf-8
+
+**********************
+PowerShell transcript end
+End time: 20230224192337
+**********************

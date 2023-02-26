@@ -72,6 +72,7 @@
   FunctionsToExport = @(
     'Get-OpenAIToken',
     'Get-ImageInformation',
+    'Get-ImageMagickPos',
     'New-OpenAIImage',
     'New-OpenAIImageEdit',
     'Set-OpenAIToken',
