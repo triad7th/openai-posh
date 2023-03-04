@@ -23,4 +23,5 @@ else {
   Get-OpenAIToken | Set-OpenAIToken
 }
 
-Export-ModuleMember -Variable OpenAI
+# export
+Export-ModuleMember -Variable OpenAI -Alias gii

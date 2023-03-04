@@ -5,12 +5,12 @@ param (
 )
 
 $fam = @(
-  @{ name = "dad"; prompt = "A high-quality illustration of an anthropomorphic Daddy $Subject with mustache and thick glasses. Kids friendly cartoon style digital art. White background. No shadow." },
+  @{ name = "dad"; prompt = "A high-quality illustration of an anthropomorphic Daddy $Subject with mustache and thick glasses. Kids friendly cartoon style digital art. White background. No shadow." }
   @{ name = "mom"; prompt = "A high-quality illustration of an anthropomorphic Mommy $Subject with earrings and thick lips. Kids friendly cartoon style digital art. White background. No shadow." },
   @{ name = "bro"; prompt = "A high-quality illustration of an anthropomorphic Brother $Subject with baseball hat and silly smile. Kids friendly cartoon style digital art. White background. No shadow." },
   @{ name = "sis"; prompt = "A high-quality illustration of an anthropomorphic Sister $Subject with lady hat, earrings, pretty face and nice smile. Kids friendly cartoon style digital art. White background. No shadow." },
   @{ name = "beb"; prompt = "A high-quality illustration of an anthropomorphic Baby $Subject with pacifier on his mouth, Kids friendly cartoon style digital art. White background. No shadow." }  
-  # @{ name = "bg"; prompt = "A high-quality background photo themed as '$Subject'. A realistic style. Sharp focus, Extremely detailed." }
+  @{ name = "bg"; prompt = "A high-quality background photo themed as '$Subject'. A realistic style. Sharp focus, Extremely detailed." }
 )
 
 $timestamp = Get-Timestamp
@@ -20,6 +20,8 @@ foreach ($mem in $fam) {
   Write-OutputTitle -String $path
   New-OpenAIImage -Path $path -Prompt $mem.prompt -ImproveBorders -WhiteBackgroundTransparent
 }
+
+.\release.ps1 $Subject $timestamp
 
 # New-OpenAIImage
 #   -Path './b-image-edited.png' `

@@ -16,6 +16,12 @@ function Get-ImageInformation {
   $response = & $OpenAI.cfg.MagickPath identify $Src.FullName
   if ($response) {
     $response = $response.split(' ')
+    if ($response.Length -gt 9) {
+      $newResponse = @()
+      $newResponse += $response[0..$($response.Length - 9)] -join ' '
+      $response[$($response.Length - 8)..$($response.Length - 1)] | ForEach-Object { $newResponse += $_ }
+      $response = $newResponse
+    }
     $response[3] -match '([\d\.]+)x([\d\.]+)([+-][\d\.]+)([+-][\d\.]+)' | Out-Null
     return [PSCustomObject]@{
       Filename    = $response[0]
@@ -39,3 +45,5 @@ function Get-ImageInformation {
     }  
   }
 }
+
+New-Alias -Name gii -Value Get-ImageInformation

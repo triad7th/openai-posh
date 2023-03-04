@@ -71,13 +71,17 @@
   # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
   FunctionsToExport = @(
     'Get-OpenAIToken',
+    'Get-GrowImagePlan',
     'Get-ImageInformation',
+    'Get-ImageMagickCommand',
     'Get-ImageMagickPos',
     'New-OpenAIImage',
     'New-OpenAIImageEdit',
     'Set-OpenAIToken',
-    'Invoke-CropBackground'
-    'Invoke-ShrinkImage'
+    'Invoke-CropBackground',
+    'Invoke-ShrinkImage',
+    'Invoke-ExtendImage',
+    'Invoke-GrowImage'
   )
 
   # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -89,7 +93,9 @@
   )
 
   # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-  AliasesToExport   = @()
+  AliasesToExport   = @(
+    'gii'
+  )
 
   # DSC resources to export from this module
   # DscResourcesToExport = @()
