@@ -80,6 +80,7 @@
     'Set-OpenAIToken',
     'Invoke-CropBackground',
     'Invoke-ShrinkImage',
+    'Invoke-ExpandImage',
     'Invoke-ExtendImage',
     'Invoke-GrowImage'
   )
